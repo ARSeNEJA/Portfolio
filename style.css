@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 /* RESET + VARIABLES */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Segoe UI', sans-serif;
+
 }
 
 :root {
@@ -20,6 +22,7 @@ body {
 	line-height: 1.6;
 	padding-top: var(--nav-height);
 	overflow-x: hidden;
+	font-family: 'Segoe UI', sans-serif;
 }
 
 /* NAVIGATION */
@@ -84,10 +87,13 @@ nav a:hover::before {
 }
 
 .hero h1 {
-	font-size: 4rem;
+	font-family: "Playfair Display", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 	color: var(--couleur-titre);
 	margin-bottom: 20px;
 	animation-delay: 0.2s;
+	font-size: 8rem; 
 }
 
 .hero h2 {
@@ -335,22 +341,8 @@ body::before {
 	border-right: 3px solid var(--couleur-primaire);
 	width: 0;
 	animation: typing 3s steps(30, end) forwards, blink 0.8s step-end infinite;
-}
-
-@keyframes typing {
-	from {
-		width: 0;
-	}
-
-	to {
-		width: 100%;
-	}
-}
-
-@keyframes blink {
-	50% {
-		border-color: transparent;
-	}
+	font-family: "Playfair Display", sans-serif;
+	font-weight: 400;
 }
 
 /* Fade-in lettres individuelles */
