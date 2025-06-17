@@ -4,31 +4,235 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Mes Compétences - Arsène J.</title>
+	<title>Compétences - Arsène.J</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<!-- Custom CSS -->
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<nav>
-		<ul>
-			<li><a href="index.html">Accueil</a></li>
-			<li><a href="competences.html">Compétences</a></li>
-		</ul>
+	<!-- Navigation Bootstrap -->
+	<nav class="navbar navbar-expand-lg navbar-custom">
+		<div class="container">
+			<a class="navbar-brand text-white fw-bold" href="index.html">Arsène.J</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mx-auto"> <!-- Ajout de mx-auto ici -->
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="competences.html">Compétences</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 
-	<section class="page-content">
+	<!-- Contenu principal -->
+	<div class="container mt-5">
 		<h1 class="page-title">Mes Compétences</h1>
-		<div class="skill-container">
-			<!-- Contenu des compétences identique -->
-			<div class="skill-item">
-				<h3>HTML/CSS</h3>
-				<div class="skill-bar">
-					<div class="skill-progress" style="--value: 85%;"></div>
+
+		<div class="row g-4">
+			<!-- Compétence 1 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-code competence-icon"></i>
+							<h3>S2.01</h3>
+						</div>
+						<h4>Développement d'une application</h4>
+						<p class="card-text">Développement d'applications informatiques simples et réalisation de
+							systèmes d'information adaptés aux besoins des utilisateurs.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Implémenter des conceptions simples</li>
+								<li>Élaborer des conceptions simples</li>
+								<li>Faire des essais et évaluer leurs résultats</li>
+								<li>Développer des interfaces utilisateurs</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge success">Niveau : Développé</span>
+						</div>
+					</div>
 				</div>
 			</div>
-			<!-- Ajouter les autres compétences -->
+
+			<!-- Compétence 2 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-project-diagram competence-icon"></i>
+							<h3>S2.02</h3>
+						</div>
+						<h4>Exploration algorithmique d'un problème</h4>
+						<p class="card-text">Analyse et résolution de problèmes complexes par des approches
+							algorithmiques efficaces et optimisées.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Analyser un problème avec méthode</li>
+								<li>Comparer des algorithmes</li>
+								<li>Formaliser et implémenter des solutions</li>
+								<li>Analyser la complexité des algorithmes</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge">Niveau : En cours</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Compétence 3 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-network-wired competence-icon"></i>
+							<h3>S2.03</h3>
+						</div>
+						<h4>Installation de services réseau</h4>
+						<p class="card-text">Installation, configuration et administration de services réseau pour
+							assurer la communication entre systèmes informatiques.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Déployer des services dans une architecture réseau</li>
+								<li>Configurer et sécuriser les services</li>
+								<li>Surveiller et maintenir les services</li>
+								<li>Documenter les configurations</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge warning">Niveau : Initié</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Compétence 4 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-database competence-icon"></i>
+							<h3>S2.04</h3>
+						</div>
+						<h4>Exploitation d'une base de données</h4>
+						<p class="card-text">Conception, création et exploitation de bases de données pour stocker et
+							gérer efficacement l'information.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Mettre à jour et interroger une base de données</li>
+								<li>Visualiser des données</li>
+								<li>Concevoir une base de données</li>
+								<li>Optimiser les requêtes</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge success">Niveau : Développé</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Compétence 5 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-tasks competence-icon"></i>
+							<h3>S2.05</h3>
+						</div>
+						<h4>Gestion d'un projet</h4>
+						<p class="card-text">Planification, organisation et suivi de projets informatiques en appliquant
+							les méthodologies de gestion de projet.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Appliquer une démarche de suivi de projet</li>
+								<li>Planifier les tâches et les ressources</li>
+								<li>Présenter son travail</li>
+								<li>Organiser son travail en équipe</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge">Niveau : En cours</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Compétence 6 -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card competence-card h-100">
+					<div class="card-body d-flex flex-column">
+						<div class="competence-header">
+							<i class="fas fa-users competence-icon"></i>
+							<h3>S2.06</h3>
+						</div>
+						<h4>Organisation d'un travail d'équipe</h4>
+						<p class="card-text">Collaboration efficace au sein d'équipes de développement en appliquant les
+							méthodologies agiles et les bonnes pratiques.</p>
+
+						<div class="competence-details flex-grow-1">
+							<h5>Apprentissages critiques :</h5>
+							<ul>
+								<li>Identifier les problèmes de communication</li>
+								<li>Organiser son travail en équipe</li>
+								<li>Collaborer dans une équipe informatique</li>
+								<li>Rendre compte de son activité</li>
+							</ul>
+						</div>
+
+						<div class="text-end mt-auto">
+							<span class="badge niveau-badge">Niveau : En cours</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</section>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer-custom">
+		<div class="container">
+			<div class="text-center">
+				<p>&copy; 2025 Arsène.J - Tous droits réservés</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
