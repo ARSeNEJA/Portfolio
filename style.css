@@ -20,7 +20,7 @@
 	--couleur-succes: #10b981; /* Vert */
 	--couleur-warning: #f59e0b; /* Orange */
 	--couleur-erreur: #ef4444; /* Rouge */
-	--nav-height: 80px;
+	--nav-height: 60px;
 	--ombre: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 	--ombre-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -85,6 +85,121 @@ nav a:hover::before {
 	left: 10%;
 }
 
+/* NAVIGATION BOOTSTRAP - BANDE MOINS LARGE */
+.navbar-custom {
+	background: rgba(255, 255, 255, 0.95) !important;
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--couleur-bordure);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 10px 0 !important; /* Réduire de 15px à 10px */
+	height: 60px; /* Réduire la hauteur de 80px à 60px */
+}
+
+.navbar-custom .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.navbar-custom .navbar-nav {
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem; /* Réduire l'espacement entre les liens */
+	margin: 0 !important;
+}
+
+.navbar-custom .nav-link {
+	color: var(--couleur-texte) !important;
+	font-weight: 500;
+	padding: 8px 16px !important; /* Réduire le padding de 10px 20px à 8px 16px */
+	border-radius: 6px; /* Réduire le border-radius */
+	transition: all 0.3s ease;
+	position: relative;
+	text-decoration: none;
+	white-space: nowrap;
+	font-size: 0.95rem; /* Réduire légèrement la taille de la police */
+}
+
+.navbar-custom .nav-link:hover {
+	color: var(--couleur-primaire) !important;
+	background: rgba(37, 99, 235, 0.1);
+}
+
+.navbar-custom .nav-link.active {
+	color: var(--couleur-primaire) !important;
+	font-weight: 600;
+}
+
+.navbar-custom .nav-link::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px; /* Réduire l'épaisseur de la ligne de 3px à 2px */
+	bottom: 0;
+	left: 50%;
+	background: var(--couleur-primaire);
+	transition: all 0.3s ease;
+	border-radius: 1px;
+	transform: translateX(-50%);
+}
+
+.navbar-custom .nav-link:hover::before,
+.navbar-custom .nav-link.active::before {
+	width: 80%;
+}
+
+/* Cacher le brand et le toggler pour avoir seulement le menu centré */
+.navbar-custom .navbar-brand {
+	display: none !important;
+}
+
+.navbar-custom .navbar-toggler {
+	border: none !important;
+	padding: 2px 6px; /* Réduire le padding du bouton hamburger */
+}
+
+.navbar-custom .navbar-toggler:focus {
+	box-shadow: none !important;
+}
+
+/* RESPONSIVE POUR MOBILE */
+@media (max-width: 991.98px) {
+	.navbar-custom .navbar-collapse {
+		text-align: center;
+		margin-top: 1rem;
+	}
+	
+	.navbar-custom .navbar-nav {
+		flex-direction: column !important;
+		gap: 1rem;
+	}
+	
+	.navbar-custom .navbar-toggler {
+		display: block !important;
+		margin: 0 auto;
+	}
+	
+	.navbar-custom .container {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar-custom .navbar-toggler {
+		display: none !important;
+	}
+	
+	.navbar-custom .navbar-collapse {
+		display: flex !important;
+		justify-content: center;
+		width: 100%;
+	}
+}
+
 /* HERO SECTION */
 .hero {
 	min-height: 100vh;
@@ -126,7 +241,7 @@ nav a:hover::before {
 	color: var(--couleur-titre);
 	margin-bottom: 20px;
 	animation-delay: 0.2s;
-	font-size: 8rem; /* Augmenté de 6rem à 8rem */
+	font-size: 8rem;
 	background: linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -184,105 +299,157 @@ nav a:hover::before {
 table {
 	width: 100%;
 	border-collapse: collapse;
-	background: var(--couleur-carte);
+	background: transparent !important; /* CLEF : Rendre le tableau transparent */
+	border-radius: 8px;
+	overflow: hidden;
+	/* SUPPRIMER la bordure extérieure du tableau */
+	/* border: 1px solid #dee2e6; */
+}
+
+/* EN-TÊTE */
+.table-custom thead th {
+	background: var(--couleur-primaire) !important;
+	color: white;
+	font-weight: 600;
+	padding: 10px 15px;
+	border-right: 1px solid #1e40af !important;
+	border-bottom: 2px solid #dee2e6 !important;
+}
+
+.table-custom thead th:last-child {
+	border-right: none !important;
+}
+
+/* CORPS DU TABLEAU */
+.table-custom tbody td {
+	background: transparent !important;
+	padding: 15px 20px;
+	text-align: left;
+	border-right: 1px solid #dee2e6 !important;
+	border-bottom: 1px solid #dee2e6 !important;
+	vertical-align: middle;
+}
+
+.table-custom tbody td:last-child {
+	border-right: none !important;
+}
+
+/* GARDER la bordure inférieure de la dernière ligne */
+.table-custom tbody tr:last-child td {
+	/* border-bottom: none !important; */ /* SUPPRIMER cette ligne */
+	border-bottom: 1px solid #dee2e6 !important; /* GARDER la bordure */
+}
+
+/* PREMIÈRE COLONNE */
+.table-custom td:first-child,
+.table-custom th:first-child {
+	font-weight: 600;
+	color: var(--couleur-titre);
+}
+
+.table-custom tbody td:first-child {
+	background: rgba(37, 99, 235, 0.05) !important;
+}
+
+/* HOVER EFFECT */
+.table-custom tbody tr:hover td {
+	background: rgba(37, 99, 235, 0.08) !important;
+}
+
+/* COCHES VERTES */
+.check-mark {
+	color: #22c55e;
+	font-size: 1.2rem;
+	font-weight: bold;
+	display: block;
+	text-align: center;
+}
+
+td:not(:first-child) {
+	text-align: center;
+}
+
+/* CORRECTION POUR FOND GRIS JUSQU'EN BAS */
+.table-container {
+	background: #f8f9fa; /* Fond gris */
 	border-radius: 12px;
+	padding: 30px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	margin-top: 3rem;
+	opacity: 0;
+	transform: translateY(30px);
+	animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: transparent !important;
+	border-radius: 8px;
 	overflow: hidden;
 }
 
-th, td {
-	padding: 16px 20px;
-	text-align: center;
-	border-bottom: 1px solid var(--couleur-bordure);
-}
-
-th {
-	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+/* EN-TÊTE */
+.table-custom thead th {
+	background: var(--couleur-primaire) !important;
 	color: white;
 	font-weight: 600;
-	font-size: 0.9rem;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
+	padding: 15px 20px;
+	border-right: 1px solid #1e40af !important;
+	border-bottom: 2px solid #dee2e6 !important;
 }
 
-td:first-child, th:first-child {
-	text-align: left;
-	font-weight: 600;
+.table-custom thead th:last-child {
+	border-right: none !important;
 }
 
-td:first-child {
-	color: var(--couleur-titre);
-	background: var(--couleur-fond-section);
-}
-
-tbody tr {
-	transition: all 0.3s ease;
-}
-
-tbody tr:hover {
-	background: var(--couleur-hover);
-	transform: scale(1.01);
-}
-
-tbody tr:last-child td {
-	border-bottom: none;
-}
-
-/* Masquer les bordures dans l'en-tête du tableau */
-.table-custom thead th {
-	border: none !important;
-}
-
-/* Garder les bordures uniquement dans le corps du tableau */
+/* CORPS DU TABLEAU */
 .table-custom tbody td {
-	border: 1px solid #dee2e6 !important;
+	background: transparent !important;
+	padding: 15px 20px;
+	text-align: left;
+	border-right: 1px solid #dee2e6 !important;
+	border-bottom: 1px solid #dee2e6 !important;
+	vertical-align: middle;
 }
 
-/* Optionnel : masquer la bordure du haut de la première ligne du tbody */
-.table-custom tbody tr:first-child td {
-	border-top: none !important;
+.table-custom tbody td:last-child {
+	border-right: none !important;
 }
 
-/* Bordures uniquement pour le corps du tableau */
-.table-body-bordered tbody td {
-	border: 1px solid #dee2e6;
+/* GARDER la bordure inférieure de la dernière ligne */
+.table-custom tbody tr:last-child td {
+	/* border-bottom: none !important; */ /* SUPPRIMER cette ligne */
+	border-bottom: 1px solid #dee2e6 !important; /* GARDER la bordure */
 }
 
-.table-body-bordered thead th {
-	border: none;
+/* PREMIÈRE COLONNE */
+.table-custom td:first-child,
+.table-custom th:first-child {
+	font-weight: 600;
+	color: var(--couleur-titre);
 }
 
-/* Styles pour les coches */
-td:not(:first-child) {
+.table-custom tbody td:first-child {
+	background: rgba(37, 99, 235, 0.05) !important;
+}
+
+/* HOVER EFFECT */
+.table-custom tbody tr:hover td {
+	background: rgba(37, 99, 235, 0.08) !important;
+}
+
+/* COCHES VERTES */
+.check-mark {
+	color: #22c55e;
 	font-size: 1.2rem;
-	color: var(--couleur-succes);
 	font-weight: bold;
+	display: block;
+	text-align: center;
 }
 
-/* PROJETS */
-.projects {
-	padding: 100px 15%;
-	background: var(--couleur-fond);
-}
-
-.project-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 30px;
-}
-
-.project-card {
-	background: var(--couleur-carte);
-	padding: 30px;
-	border-radius: 12px;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	border: 1px solid var(--couleur-bordure);
-	box-shadow: var(--ombre);
-}
-
-.project-card:hover {
-	transform: translateY(-8px);
-	box-shadow: var(--ombre-hover);
-	border-color: var(--couleur-primaire);
+td:not(:first-child) {
+	text-align: center;
 }
 
 /* COMPÉTENCES */
@@ -602,8 +769,8 @@ footer {
 	/* Animation identique aux textes mais plus rapide */
 	opacity: 0;
 	transform: translateY(30px);
-	animation: fadeInUp 0.6s ease-out forwards; /* Réduit de 1s à 0.6s */
-	animation-delay: 1.2s; /* Réduit de 1.4s à 1.2s */
+	animation: fadeInUp 0.6s ease-out forwards;
+	animation-delay: 1.2s;
 	/* Supprimer la bordure blanche du bas */
 	border: none;
 }
@@ -613,7 +780,7 @@ footer {
 	opacity: 0;
 	transform: translateY(30px);
 	animation: fadeInUp 0.6s ease-out forwards; /* Réduit de 1s à 0.6s */
-	animation-delay: 1.3s; /* Réduit de 1.6s à 1.3s */
+	animation-delay: 1.3s; /* Réduits de 1.6s à 1.3s */
 	/* Supprimer la bordure blanche du tableau */
 	border: none;
 	border-radius: 12px;
@@ -669,18 +836,17 @@ footer {
 
 /* Garder les bordures uniquement dans le corps du tableau */
 .table-custom tbody td {
-	border: 1px solid #dee2e6 !important;
-	border-top: 1px solid #dee2e6 !important;
+	border: none !important;
 }
 
 /* Masquer la bordure du haut de la première ligne du tbody */
 .table-custom tbody tr:first-child td {
-	border-top: none !important;
+	border-top: none !important; /* Cette règle peut rester ou être supprimée si la précédente supprime déjà tout */
 }
 
 /* Supprimer la bordure du bas de la dernière ligne */
 .table-custom tbody tr:last-child td {
-	border-bottom: none !important;
+	border-bottom: none !important; /* Cette règle peut rester ou être supprimée */
 }
 
 /* Animation plus fluide pour les cellules avec des coches */
@@ -701,7 +867,7 @@ footer {
 	}
 
 	.hero h1 {
-		font-size: 5rem; /* Augmenté de 3.5rem à 5rem */
+		font-size: 5rem;
 	}
 
 	.hero h2 {
@@ -785,201 +951,16 @@ footer {
 	}
 }
 
-/* COMPÉTENCES - CARTES */
-.competences-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-	gap: 30px;
-	margin-top: 40px;
+/* AUGMENTER L'ESPACE POUR LA PAGE COMPÉTENCES */
+.skills-section {
+	padding-top: 1.5rem !important; /* Augmenté de 120px à 180px pour plus d'espace */
+	min-height: 100vh;
+	background: var(--couleur-fond);
 }
 
-.competence-card {
-	background: var(--couleur-carte);
-	border-radius: 16px;
-	padding: 30px;
-	border: 1px solid var(--couleur-bordure);
-	box-shadow: var(--ombre);
-	transition: all 0.3s ease;
-	position: relative;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	min-height: 450px; /* Hauteur minimale pour uniformiser */
-}
 
-.competence-card::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 4px;
-	background: linear-gradient(90deg, var(--couleur-primaire), var(--couleur-accent));
-}
-
-.competence-card:hover {
-	transform: translateY(-8px);
-	box-shadow: var(--ombre-hover);
-	border-color: var(--couleur-primaire);
-}
-
-.competence-header {
-	display: flex;
-	align-items: center;
-	gap: 15px;
-	margin-bottom: 20px;
-}
-
-.competence-icon {
-	font-size: 2.5rem;
-	color: var(--couleur-primaire);
-	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-accent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-}
-
-.competence-card h3 {
-	color: var(--couleur-titre);
-	font-size: 1.5rem;
-	font-weight: 700;
-	margin: 0;
-}
-
-.competence-card h4 {
-	color: var(--couleur-secondaire);
-	font-size: 1.2rem;
-	font-weight: 600;
-	margin-bottom: 15px;
-	line-height: 1.3;
-}
-
-.competence-card > p {
-	color: var(--couleur-texte);
-	line-height: 1.6;
-	margin-bottom: 25px;
-	font-size: 0.95rem;
-}
-
-.competence-details {
-	margin-bottom: 25px;
-	flex-grow: 1; /* Prend l'espace disponible */
-}
-
-.competence-niveau {
-	display: flex;
-	justify-content: flex-end;
-	margin-top: auto; /* Pousse le badge vers le bas */
-}
-
-.niveau-badge {
-	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-accent));
-	color: white;
-	padding: 8px 16px;
-	border-radius: 20px;
-	font-size: 0.85rem;
-	font-weight: 600;
-	letter-spacing: 0.5px;
-	text-transform: uppercase;
-}
-
-/* Variantes de couleurs pour les badges */
-.competence-card:nth-child(odd) .niveau-badge {
-	background: linear-gradient(135deg, var(--couleur-succes), #059669);
-}
-
-.competence-card:nth-child(3n) .niveau-badge {
-	background: linear-gradient(135deg, var(--couleur-warning), #d97706);
-}
-
-/* Animation d'apparition des cartes */
-.competence-card {
-	opacity: 0;
-	transform: translateY(30px);
-	animation: fadeInCard 0.6s ease-out forwards;
-}
-
-.competence-card:nth-child(1) { animation-delay: 0.1s; }
-.competence-card:nth-child(2) { animation-delay: 0.2s; }
-.competence-card:nth-child(3) { animation-delay: 0.3s; }
-.competence-card:nth-child(4) { animation-delay: 0.4s; }
-.competence-card:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes fadeInCard {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-/* RESPONSIVE COMPÉTENCES */
-@media (max-width: 768px) {
-	.competences-grid {
-		grid-template-columns: 1fr;
-		gap: 25px;
-	}
-	
-	.competence-card {
-		padding: 25px;
-		min-height: 400px; /* Hauteur réduite pour mobile */
-	}
-	
-	.competence-header {
-		gap: 12px;
-	}
-	
-	.competence-icon {
-		font-size: 2rem;
-	}
-	
-	.competence-card h3 {
-		font-size: 1.3rem;
-	}
-	
-	.competence-card h4 {
-		font-size: 1.1rem;
-	}
-}
-
-@media (max-width: 480px) {
-	.competences-grid {
-		gap: 20px;
-	}
-	
-	.competence-card {
-		padding: 20px;
-		min-height: 380px; /* Hauteur encore plus réduite pour petit mobile */
-	}
-	
-	.competence-header {
-		flex-direction: column;
-		text-align: center;
-		gap: 10px;
-	}
-	
-	.competence-icon {
-		font-size: 2.5rem;
-	}
-
-.fade-in-text span:nth-child(5) {
-	animation-delay: 0.4s;
-}
-.fade-in-text span:nth-child(6) {
-	animation-delay: 0.5s;
-}
-.fade-in-text span:nth-child(7) {
-	animation-delay: 0.6s;
-}
-.fade-in-text span:nth-child(8) {
-	animation-delay: 0.7s;
-}
-.fade-in-text span:nth-child(9) {
-	animation-delay: 0.8s;
-}
-
-@keyframes fadeLetter {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+/* ALTERNATIVE : Ajouter de la marge au titre lui-même */
+.skills-section .page-title {
+	margin-top: 4rem !important; /* Espace supplémentaire au-dessus du titre */
+	margin-bottom: 2rem;
 }
