@@ -759,6 +759,32 @@ footer {
 	}
 }
 
+/* CARDS CLIQUABLES */
+.competence-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.competence-link:hover {
+	text-decoration: none;
+	color: inherit;
+	transform: translateY(-5px);
+}
+
+.competence-card {
+	cursor: pointer;
+	transition: all 0.3s ease;
+	border: 2px solid transparent;
+}
+
+.competence-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 12px 35px rgba(37, 99, 235, 0.2);
+	border-color: var(--couleur-primaire);
+}
+
 /* TABLEAU COMPÉTENCES - RESTAURER STYLE ORIGINAL AVEC ANIMATION PLUS RAPIDE */
 .table-responsive {
 	margin-top: 80px;
@@ -859,6 +885,32 @@ footer {
 	color: var(--couleur-primaire);
 }
 
+/* === ÉGALISATION DES HAUTEURS DES CARDS DE COMPÉTENCES === */
+.skills-section .row.g-4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;  /* étire toutes les colonnes à la même hauteur */
+}
+
+/* chaque colonne devient un flex-container */
+.skills-section .row.g-4 > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* le lien englobe la card et prend tout l’espace */
+.competence-link {
+  display: flex;
+  flex: 1;
+}
+
+/* la card remplit sa colonne et s’organise en flex-colonne */
+.competence-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
 	.hero {
@@ -951,16 +1003,293 @@ footer {
 	}
 }
 
-/* AUGMENTER L'ESPACE POUR LA PAGE COMPÉTENCES */
-.skills-section {
-	padding-top: 1.5rem !important; /* Augmenté de 120px à 180px pour plus d'espace */
+
+/* ALTERNATIVE : Ajouter de la marge au titre lui-même */
+.skills-section .page-title {
+	margin-top: 2rem !important;
+	/* Espace supplémentaire au-dessus du titre */
+	margin-bottom: 2rem;
+}
+
+
+/* PAGES DE DÉTAIL DES COMPÉTENCES */
+.competence-detail-section {
+	padding-top: 120px;
 	min-height: 100vh;
 	background: var(--couleur-fond);
 }
 
+.breadcrumb {
+	background: transparent;
+	padding: 0;
+}
 
-/* ALTERNATIVE : Ajouter de la marge au titre lui-même */
-.skills-section .page-title {
-	margin-top: 4rem !important; /* Espace supplémentaire au-dessus du titre */
+.breadcrumb-item a {
+	color: var(--couleur-primaire);
+	text-decoration: none;
+}
+
+.competence-header-detail {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.competence-icon-large {
+	font-size: 5rem;
+	color: var(--couleur-primaire);
+	margin-bottom: 1rem;
+	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-accent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.competence-title {
+	font-family: "Raleway", sans-serif;
+	font-size: 3rem;
+	color: var(--couleur-titre);
+	margin-bottom: 1rem;
+}
+
+.competence-subtitle {
+	font-size: 1.3rem;
+	color: var(--couleur-texte);
 	margin-bottom: 2rem;
+}
+
+.competence-level-badge {
+	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-accent));
+	color: white;
+	padding: 0.8rem 2rem;
+	border-radius: 30px;
+	font-weight: 600;
+	display: inline-block;
+}
+
+.presentation-card {
+	background: white;
+	border-radius: 16px;
+	padding: 3rem;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--couleur-bordure);
+}
+
+.presentation-card h2 {
+	color: var(--couleur-titre);
+	margin-bottom: 2rem;
+	font-family: "Raleway", sans-serif;
+}
+
+.competence-stats {
+	margin-top: 2rem;
+	padding-top: 2rem;
+	border-top: 1px solid var(--couleur-bordure);
+}
+
+.stat-item h4 {
+	color: var(--couleur-primaire);
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+	color: var(--couleur-texte);
+	margin: 0;
+	font-weight: 500;
+}
+
+.section-title {
+	font-family: "Raleway", sans-serif;
+	color: var(--couleur-titre);
+	font-size: 2.5rem;
+	margin-bottom: 3rem;
+}
+
+.point-card {
+	background: white;
+	border-radius: 16px;
+	padding: 2.5rem;
+	box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+	height: 100%;
+	position: relative;
+	transition: all 0.3s ease;
+	border: 1px solid var(--couleur-bordure);
+}
+
+.point-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 12px 35px rgba(37, 99, 235, 0.15);
+	border-color: var(--couleur-primaire);
+}
+
+.point-number {
+	position: absolute;
+	top: -15px;
+	right: 20px;
+	background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-accent));
+	color: white;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 1.3rem;
+	box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.point-icon {
+	font-size: 2.5rem;
+	color: var(--couleur-primaire);
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.point-card h3 {
+	color: var(--couleur-titre);
+	margin-bottom: 1rem;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.4rem;
+}
+
+.point-card ul {
+	list-style: none;
+	padding: 0;
+	margin: 1.5rem 0;
+}
+
+.point-card ul li {
+	position: relative;
+	padding-left: 2rem;
+	margin-bottom: 0.8rem;
+	color: var(--couleur-texte);
+	line-height: 1.5;
+}
+
+.point-card ul li::before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	color: var(--couleur-primaire);
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.point-badge {
+	text-align: center;
+	margin-top: 1.5rem;
+}
+
+.related-projects {
+	background: white;
+	border-radius: 16px;
+	padding: 3rem;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--couleur-bordure);
+}
+
+.related-projects h3 {
+	color: var(--couleur-titre);
+	margin-bottom: 2rem;
+	font-family: "Raleway", sans-serif;
+}
+
+.mini-project-card {
+	background: var(--couleur-fond-section);
+	border-radius: 12px;
+	padding: 2rem;
+	text-align: center;
+	transition: all 0.3s ease;
+	border: 1px solid var(--couleur-bordure);
+	height: 100%;
+}
+
+.mini-project-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	border-color: var(--couleur-primaire);
+}
+
+.project-icon {
+	font-size: 2.5rem;
+	color: var(--couleur-primaire);
+	margin-bottom: 1rem;
+}
+
+.mini-project-card h5 {
+	color: var(--couleur-titre);
+	margin-bottom: 1rem;
+	font-family: "Raleway", sans-serif;
+}
+
+.mini-project-card p {
+	color: var(--couleur-texte);
+	margin-bottom: 1.5rem;
+	line-height: 1.6;
+}
+
+.project-tech {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: center;
+}
+
+/* Animation des cards */
+.point-card {
+	opacity: 0;
+	transform: translateY(30px);
+	animation: fadeInCard 0.6s ease-out forwards;
+}
+
+.point-card:nth-child(1) {
+	animation-delay: 0.1s;
+}
+
+.point-card:nth-child(2) {
+	animation-delay: 0.2s;
+}
+
+.point-card:nth-child(3) {
+	animation-delay: 0.3s;
+}
+
+.point-card:nth-child(4) {
+	animation-delay: 0.4s;
+}
+
+.point-card:nth-child(5) {
+	animation-delay: 0.5s;
+}
+
+.point-card:nth-child(6) {
+	animation-delay: 0.6s;
+}
+
+@keyframes fadeInCard {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.competence-title {
+		font-size: 2rem;
+	}
+
+	.point-card {
+		padding: 2rem;
+	}
+
+	.presentation-card {
+		padding: 2rem;
+	}
+
+	.related-projects {
+		padding: 2rem;
+	}
 }
